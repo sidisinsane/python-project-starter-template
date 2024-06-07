@@ -47,6 +47,8 @@ skips:
   - B311 # Skip random usage
   - B312 # Skip telnetlib usage
   - B404 # Skip import of insecure hashlib functions
+  - B605 # Skip starting a process with a shell
+  - B607 # Skip starting a process with a partial executable path
 
 # Custom configuration for individual plugins
 plugin_config:
