@@ -17,7 +17,7 @@ class ExampleClass:
 EXAMPLE_CONSTANT: int = 42
 
 
-def main():
+def main() -> None:
     log.info(add(1, 2))
 
     obj = ExampleClass()
