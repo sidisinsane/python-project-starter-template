@@ -1,0 +1,29 @@
+import pytest
+from {{ python_package_import_name }}.example import (
+    ExampleClass,
+    add,
+)
+
+
+def test_add() -> None:
+    # Test add function with valid inputs
+    assert add(1, 2) == 3
+    assert add(-1, 1) == 0
+    assert add(0, 0) == 0
+    assert add(100, 200) == 300
+
+    # Test add function with invalid inputs (should raise TypeError)
+    with pytest.raises(TypeError):
+        add("foo", "bar")
+
+
+def test_method() -> None:
+    # Test method in ExampleClass with valid input
+    obj = ExampleClass()
+    assert obj.method(3) == 6
+    assert obj.method(0) == 0
+    assert obj.method(-3) == -6
+
+    # Test method in ExampleClass with invalid input (should raise TypeError)
+    with pytest.raises(TypeError):
+        obj.method("bar")

@@ -1,0 +1,140 @@
+{
+  // Editor appearance / behaviour
+  "debug.console.fontFamily": "Source Code Pro",
+  "editor.autoIndent": "advanced", // Enable smart auto-indentation
+  "editor.fontFamily": "Source Code Pro",
+  "editor.fontSize": 12, // Use 22 for Screen Recordings
+  "editor.fontWeight": "400",
+  "editor.minimap.autohide": true,
+  "editor.minimap.enabled": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.scale": 1,
+  "editor.minimap.sectionHeaderFontSize": 9,
+  "editor.quickSuggestionsDelay": 100,
+  "editor.stickyScroll.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "comments": "#ffee00" // Make all comments yellow.
+  },
+  "explorer.compactFolders": false,
+  "explorer.sortOrder": "default",
+  "files.associations": {
+    "*.env*": "dotenv",
+    ".gitignore": "shellscript",
+    ".coveragerc": "ini"
+  },
+  "files.encoding": "utf8",
+  "files.eol": "auto",
+  "files.exclude": {
+    "**/.git": false,
+    "**/.hatch": false,
+    "**/.DS_Store": false
+  },
+  "terminal.integrated.fontSize": 12, // Use 22 for Screen Recordings
+  "terminal.integrated.fontWeight": "400",
+  "window.zoomLevel": 0, // Use 2 for Screen Recordings
+  "workbench.colorCustomizations": {
+    "tree.indentGuidesStroke": "#ffee00",
+    "tree.inactiveIndentGuidesStroke": "#5d5700"
+  },
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.preferredDarkColorTheme": "Default Dark Modern",
+  "workbench.settings.editor": "json",
+  "workbench.settings.openDefaultSettings": true,
+  // "workbench.settings.useSplitJSON": true,
+  "workbench.tree.enableStickyScroll": true,
+  "workbench.tree.indent": 12,
+  "workbench.tree.renderIndentGuides": "always",
+  // Python basics
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none"
+  },
+  "python.analysis.typeCheckingMode": "basic",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.hatch/python-project-starter-template/bin/python",
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.languageServer": "Pylance",
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "python.testing.pytestEnabled": true,
+  "python.terminal.activateEnvironment": true,
+  "mypy-type-checker.preferDaemon": true,
+  "mypy-type-checker.reportingScope": "workspace",
+  "mypy-type-checker.args": [
+    "--config-file=${workspaceFolder}/mypy.ini"
+  ],
+  // Code formatting
+  "ruff.nativeServer": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      // "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.rulers": [
+      72, // PEP 8 recommendation for docstrings or comments
+      88 // Default max line-length in `black`
+    ]
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      88
+    ]
+  },
+  "[plaintext]": {
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "evenBetterToml.schema.enabled": true,
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      80
+    ]
+  },
+  "yaml.format.enable": true,
+  "yaml.schemas": {
+    "${workspaceFolder}/schemas/markdownlint-config-schema.json": "${workspaceFolder}/.markdownlint.yaml",
+    "${workspaceFolder}/schemas/pre-commit-config.json": "${workspaceFolder}/.pre-commit-config.yaml",
+    "${workspaceFolder}/schemas/yamllint.json": "${workspaceFolder}/.yamllint.yaml",
+    "${workspaceFolder}/schemas/github-workflow.json": "${workspaceFolder}/.github/workflows/*.yml"
+  },
+  "[yaml][yml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      80
+    ]
+  },
+  // CodeSnap
+  "codesnap.backgroundColor": "#abb8c3",
+  "codesnap.realLineNumbers": true,
+  "codesnap.roundedCorners": false,
+  "codesnap.showLineNumbers": true,
+  "codesnap.showWindowControls": false,
+  "codesnap.showWindowTitle": true,
+  "codesnap.shutterAction": "save",
+  "codesnap.target": "container",
+  "codesnap.transparentBackground": true
+}

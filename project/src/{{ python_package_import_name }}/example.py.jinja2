@@ -1,0 +1,23 @@
+from {{ python_package_import_name }}.logger import log
+
+
+def add(a: int, b: int) -> int:
+    if not isinstance(a, int) or not isinstance(b, int):
+        raise TypeError("Both arguments must be integers.")
+    return a + b
+
+
+class ExampleClass:
+    def method(self, x: int) -> int:
+        if not isinstance(x, int):
+            raise TypeError("Argument must be integer.")
+        return x * 2
+
+
+EXAMPLE_CONSTANT: int = 42
+
+if __name__ == "__main__":
+    print(add(1, 2))
+
+    obj = ExampleClass()
+    print(obj.method(3))

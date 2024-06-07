@@ -1,0 +1,105 @@
+[build-system]
+requires      = [ "hatchling" ]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ python_package_distribution_name }}"
+dynamic = [ "version" ]
+description = "{{ project_description }}"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "{{ copyright_license }}"
+keywords = [  ]
+authors = [
+  { name = "{{ author_fullname }}", email = "{{ author_email }}" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [ "python-dotenv>=1.0.1", "numpy>=1.26.4", "click>=8.1.7" ]
+
+[project.urls]
+Documentation = "https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}#readme"
+Issues        = "https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}/issues"
+Source        = "https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}"
+
+[project.scripts]
+cli = "{{python_package_import_name}}.cli:{{python_package_import_name}}"
+
+[tool.hatch.version]
+path = "src/{{python_package_import_name}}/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs>=1.6.0",
+  "mkdocs-material>=9.5.25",
+  "pymdown-extensions>=10.8.1",
+  "mkdocs-nav-weight>=0.2.0",
+]
+
+[tool.hatch.envs.docs.scripts]
+build  = "mkdocs build --clean --strict"
+serve  = "mkdocs serve --dev-addr localhost:8000"
+deploy = "mkdocs gh-deploy --force --clean --verbose"
+
+[[tool.hatch.envs.all.matrix]]
+python = [ "3.8", "3.9", "3.10", "3.11", "3.12" ]
+
+[tool.hatch.envs.security]
+dependencies = [ "bandit>=1.7.8" ]
+[tool.hatch.envs.security.scripts]
+check = "bandit -c bandit.yaml -f json -o reports/bandit.json -r ."
+
+[tool.hatch.envs.types]
+dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/{{python_package_import_name}} tests}"
+
+[tool.coverage.run]
+source_pkgs = [ "{{python_package_import_name}}", "tests" ]
+branch = true
+parallel = true
+omit = [
+  "src/{{python_package_import_name}}/__about__.py",
+]
+
+[tool.coverage.paths]
+{{python_package_import_name}} = [
+"src/{{python_package_import_name}}",
+"*/{{ python_package_distribution_name }}/src/{{python_package_import_name}}",
+]
+tests = [ "tests", "*/{{ python_package_distribution_name }}/tests" ]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]

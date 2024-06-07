@@ -1,0 +1,108 @@
+[build-system]
+requires      = [ "hatchling" ]
+build-backend = "hatchling.build"
+
+[project]
+name = "python-project-starter-template"
+dynamic = [ "version" ]
+description = "A Copier template for projects managed by Hatch."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = [ "python", "copier", "hatch", "boilerplate", "template" ]
+authors = [
+  { name = "Dirk Sidney Jansen", email = "sidisinsane@users.noreply.github.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "python-dotenv>=1.0.1",
+  "copier>=9.2.0",
+  "copier-templates-extensions>=0.3.0",
+]
+
+[project.urls]
+Documentation = "https://github.com/sidisinsane/python-project-starter-template#readme"
+Issues        = "https://github.com/sidisinsane/python-project-starter-template/issues"
+Source        = "https://github.com/sidisinsane/python-project-starter-template"
+
+[tool.hatch.version]
+path = "src/python_project_starter_template/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+  "pytest-copie>=0.1.6",
+]
+[tool.hatch.envs.default.scripts]
+example = "python src/python_project_starter_template/example.py"
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs>=1.6.0",
+  "mkdocs-material>=9.5.25",
+  "pymdown-extensions>=10.8.1",
+  "mkdocs-nav-weight>=0.2.0",
+]
+
+[tool.hatch.envs.docs.scripts]
+build  = "mkdocs build --clean --strict"
+serve  = "mkdocs serve --dev-addr localhost:8000"
+deploy = "mkdocs gh-deploy --force --clean --verbose"
+
+[[tool.hatch.envs.all.matrix]]
+python = [ "3.8", "3.9", "3.10", "3.11", "3.12" ]
+
+[tool.hatch.envs.security]
+dependencies = [ "bandit>=1.7.8" ]
+[tool.hatch.envs.security.scripts]
+check = "bandit -c bandit.yaml -f json -o reports/bandit.json -r ."
+
+[tool.hatch.envs.types]
+dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/python_project_starter_template tests}"
+
+[tool.coverage.run]
+source_pkgs = [ "python_project_starter_template", "tests" ]
+branch = true
+parallel = true
+omit = [
+  "src/python_project_starter_template/__about__.py",
+]
+
+[tool.coverage.paths]
+python_project_starter_template = [
+  "src/python_project_starter_template",
+  "*/python-project-starter-template/src/python_project_starter_template",
+]
+tests = [ "tests", "*/python-project-starter-template/tests" ]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
