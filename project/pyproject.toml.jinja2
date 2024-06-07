@@ -47,6 +47,8 @@ dependencies = [
 example = "python src/{{python_package_import_name}}/example.py"
 check = "ruff check"
 fix = "ruff check --fix"
+pre-commit-install = "pre-commit install && pre-commit install --hook-type commit-msg"
+pre-commit-all = "pre-commit run --all-files"
 test = "pytest {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
@@ -77,7 +79,8 @@ python = [ "3.8", "3.9", "3.10", "3.11", "3.12" ]
 [tool.hatch.envs.security]
 dependencies = [ "bandit>=1.7.8" ]
 [tool.hatch.envs.security.scripts]
-check = "bandit -c bandit.yaml -f json -o reports/bandit.json -r ."
+check = "bandit -c bandit.yaml -r ."
+log   = "bandit -c bandit.yaml -f json -o reports/bandit.json -r ."
 
 [tool.hatch.envs.types]
 dependencies = [
