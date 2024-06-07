@@ -5,7 +5,7 @@
 
 <h1>Python Project Starter Template</h1>
 
-<p><i>A Copier template for Python projects managed by Hatch.</i></p>
+<p>A Copier template for Python projects managed by Hatch.</p>
 
 <p>
 <a title="License" href="https://github.com/sidisinsane/python-project-starter-template/blob/main/LICENSE">
@@ -64,55 +64,7 @@
 ### Generate a Project
 
 ```shell
-copier copy --trust https://github.com/sidisinsane/python-project-starter-template.git PATH/TO/DESTINATION
-```
-
-or
-
-```shell
-copier copy --trust gh:sidisinsane/python-project-starter-template PATH/TO/DESTINATION
-```
-
-This will generate a new project with the following structure:
-
-```ascii
-YOUR-PROJECT-NAME/
-├── bandit.yaml
-├── commitlint.config.js
-├── docs/
-│   ├── images/
-│   │   ├── favicon.svg
-│   │   └── logo.svg
-│   ├── index.md
-│   ├── javascripts/
-│   │   └── mathjax.js
-│   └── license.md
-├── LICENSE
-├── mkdocs.yaml
-├── mypy.ini
-├── pyproject.toml
-├── pytest.ini
-├── README.md
-├── ruff.toml
-├── schemas/
-│   ├── github-workflow.json
-│   ├── markdownlint-config-schema.json
-│   ├── pre-commit-config.json
-│   └── yamllint.json
-├── src/
-│   └── YOUR_PROJECT_NAME/
-│       ├── __about__.py
-│       ├── __init__.py
-│       ├── calc.py
-│       ├── cli/
-│       │   └── __init__.py
-│       ├── example.py
-│       └── logger.py
-├── taplo.toml
-└── tests/
-    ├── __init__.py
-    ├── test_calc.py
-    └── test_example.py
+copier copy --trust https://github.com/sidisinsane/python-project-starter-template.git PATH/TO/YOUR-PROJECT-NAME
 ```
 
 ??? note
@@ -121,15 +73,13 @@ YOUR-PROJECT-NAME/
     modify it and generate a project the locally cloned repo.
 
     ```shell
-    copier copy --trust PATH/TO/CLONED/PROJECT/TEMPLATE PATH/TO/DESTINATION
+    copier copy --trust PATH/TO/CLONED/PROJECT/TEMPLATE PATH/TO/YOUR-PROJECT-NAME
     ```
-
-## Aftermath
 
 ### Create Virtual Environment
 
 ```shell
-cd PATH/TO/DESTINATION && hatch env create
+cd PATH/TO/YOUR-PROJECT-NAME && hatch env create
 ```
 
 ??? note
@@ -146,7 +96,7 @@ git init && hatch run pre-commit install
     initial commit.
     ```shell
     git add .
-    git commit -m "initial commit"
+    git commit -m "Initial commit"
     git branch -M main
     git remote add origin https://github.com/REPO_NAMESPACE/REPO_NAME.git
     git push -u origin main

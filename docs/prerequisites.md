@@ -28,7 +28,7 @@ weight: 0
 
 [Git](https://git-scm.com/) is a free and open source distributed version control system.
 
-### Install
+### Install Git
 
 | OS    | Package Manager | Command                       |
 |-------|-----------------|-------------------------------|
@@ -51,12 +51,10 @@ weight: 0
 [Visit the asdf getting started page](https://asdf-vm.com/guide/getting-started.html)
 for detailed instructions.
 
-## Python 3
+### Install Asdf Python Plugin
 
 [Python](https://www.python.org/) is an interpreted, object-oriented, high-level
 programming language with dynamic semantics.
-
-### Install Asdf Python Plugin
 
 ```shell
 asdf plugin add python
@@ -66,13 +64,7 @@ asdf plugin add python
     To list all **installed** plugins run `asdf plugin list`.
     To list all **available** plugins run `asdf plugin list all`.
 
-### Install Python Version
-
-```shell
-asdf install python latest
-```
-
-or
+#### Install Python Version
 
 ```shell
 asdf install python 3.12.2
@@ -82,28 +74,43 @@ asdf install python 3.12.2
     To list all **installed** python versions run `asdf list python`.
     To list all **available** python versions run `asdf list all python`.
 
-### Set a Default Python Version
-
-```shell
-asdf global python latest
-```
-
-or
+#### Set a Default Python Version
 
 ```shell
 asdf global python 3.12.2
 ```
 
-### Set a Python Version for Your Project
-
-```shell
-cd PATH/TO/PROJECT && asdf local python latest
-```
-
-or
+#### Set a Python Version for Your Project
 
 ```shell
 cd PATH/TO/PROJECT && asdf local python 3.12.2
+```
+
+### Install Asdf Pre-commit Plugin
+
+[Pre-commit](https://pre-commit.com/) is a framework for managing and maintaining
+multi-language pre-commit hooks.
+
+```shell
+asdf plugin add pre-commit
+```
+
+#### Install Pre-commit Version
+
+```shell
+asdf install pre-commit 3.6.2
+```
+
+#### Set a Default Pre-commit Version
+
+```shell
+asdf global pre-commit 3.6.2
+```
+
+#### Set a Pre-commit Version for Your Project
+
+```shell
+cd PATH/TO/PROJECT && asdf local pre-commit 3.6.2
 ```
 
 ??? note
@@ -111,29 +118,8 @@ cd PATH/TO/PROJECT && asdf local python 3.12.2
     current directory.
     `.tool-versions`
     ```text
-    python 3.12.2
+    --8<-- ".tool-versions"
     ```
-
-## Copier
-
-[Copier](https://copier.readthedocs.io/en/stable/) is a library and CLI app for
-rendering project templates.
-
-### Install Copier
-
-???+ note "Requirement"
-
-    If you haven't already, install `pipx` first: `pip install --user pipx`.
-
-```shell
-pipx install copier
-```
-
-### Inject Copier Templates Extensions
-
-```shell
-pipx inject copier copier-templates-extensions
-```
 
 ## Hatch
 

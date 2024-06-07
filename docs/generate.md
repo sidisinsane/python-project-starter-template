@@ -25,7 +25,7 @@ copier copy --trust gh:sidisinsane/python-project-starter-template PATH/TO/DESTI
 ## Prompts
 
 [Copier](https://copier.readthedocs.io/en/stable/) will request your input for some
-prompts. Prompts are configured in the `copier.yml` file.
+prompts. Prompts are configured in the `copier.yaml` file.
 
 !!! note
     This template only supports GitHub as repository provider!
@@ -309,91 +309,61 @@ Yes, distribution name and import name can be different!
     default: "{{ project_name | slugify }}"
     ```
 
-## Output
-
-```text
-Copying from template version 0.0.0.post14.dev0+b7759ea
-    create  .
-    create  bandit.yml
-    create  .pylintrc
-    create  mkdocs.yml
-    create  pytest.ini
-    create  .pre-commit-config.yaml
-    create  README.md
-    create  tests
-    create  tests/test_calc.py
-    create  tests/__init__.py
-    create  .coveragerc
-    create  LICENSE
-    create  mypy.ini
-    create  .gitignore
-    create  .github
-    create  .github/workflows
-    create  .github/workflows/test.yml
-    create  .github/workflows/codeql.yml
-    create  .github/workflows/ci.yml
-    create  .github/workflows/gh-pages-deploy.yml
-    create  commitlint.config.js
-    create  mkdocs
-    create  mkdocs/license.md
-    create  mkdocs/images
-    create  mkdocs/images/logo.svg
-    create  mkdocs/images/favicon.svg
-    create  mkdocs/index.md
-    create  mkdocs/javascripts
-    create  mkdocs/javascripts/mathjax.js
-    create  .vscode
-    create  .vscode/settings.json
-    create  .vscode/extensions.json
-    create  .markdownlint.yml
-    create  pyproject.toml
-    create  src
-    create  src/PYTHON_PACKAGE_IMPORT_NAME
-    create  src/PYTHON_PACKAGE_IMPORT_NAME/__init__.py
-    create  src/PYTHON_PACKAGE_IMPORT_NAME/calc.py
-    create  src/PYTHON_PACKAGE_IMPORT_NAME/__about__.py
-```
-
 The generated project will have the following structure in the specified directory:
 
 ```ascii
-PYTHON-PACKAGE-DISTRIBUTION-NAME
-├── .github
-│   └── workflows
+YOUR-PROJECT-NAME/
+├── .coveragerc
+├── .env.template
+├── .github/
+│   └── workflows/
 │       ├── ci.yml
 │       ├── codeql.yml
 │       ├── gh-pages-deploy.yml
 │       └── test.yml
-├── .vscode
-│   ├── extensions.json
-│   └── settings.json
-├── mkdocs
-│   ├── images
-│   │   ├── favicon.svg
-│   │   └── logo.svg
-│   ├── javascripts
-│   │   └── mathjax.js
-│   ├── index.md
-│   └── license.md
-├── src
-│   └── PYTHON_PACKAGE_IMPORT_NAME
-│       ├── __about__.py
-│       ├── __init__.py
-│       └── calc.py
-├── tests
-│   ├── __init__.py
-│   └── test_calc.py
-├── .coveragerc
 ├── .gitignore
-├── .markdownlint.yml
+├── .markdownlint.yaml
 ├── .pre-commit-config.yaml
 ├── .pylintrc
-├── bandit.yml
+├── .vscode/
+│   ├── argv.json
+│   ├── extensions.json
+│   └── settings.json
+├── .yamllint.yaml
+├── bandit.yaml
 ├── commitlint.config.js
+├── docs/
+│   ├── images/
+│   │   ├── favicon.svg
+│   │   └── logo.svg
+│   ├── index.md
+│   ├── javascripts/
+│   │   └── mathjax.js
+│   └── license.md
 ├── LICENSE
-├── mkdocs.yml
+├── mkdocs.yaml
 ├── mypy.ini
 ├── pyproject.toml
 ├── pytest.ini
-└── README.md
+├── README.md
+├── ruff.toml
+├── schemas/
+│   ├── github-workflow.json
+│   ├── markdownlint-config-schema.json
+│   ├── pre-commit-config.json
+│   └── yamllint.json
+├── src/
+│   └── your_project_name/
+│       ├── __about__.py
+│       ├── __init__.py
+│       ├── calc.py
+│       ├── cli/
+│       │   └── __init__.py
+│       ├── example.py
+│       └── logger.py
+├── taplo.toml
+└── tests/
+    ├── __init__.py
+    ├── test_calc.py
+    └── test_example.py
 ```
