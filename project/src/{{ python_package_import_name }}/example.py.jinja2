@@ -16,8 +16,13 @@ class ExampleClass:
 
 EXAMPLE_CONSTANT: int = 42
 
-if __name__ == "__main__":
-    print(add(1, 2))
+
+def main():
+    log.info(add(1, 2))
 
     obj = ExampleClass()
-    print(obj.method(3))
+    log.info(obj.method(3))
+
+
+if __name__ == "__main__":
+    main()

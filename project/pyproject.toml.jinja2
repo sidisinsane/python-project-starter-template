@@ -41,8 +41,12 @@ path = "src/{{python_package_import_name}}/__about__.py"
 dependencies = [
   "coverage[toml]>=6.5",
   "pytest",
+  "ruff>=0.4.7",
 ]
 [tool.hatch.envs.default.scripts]
+example = "python src/{{python_package_import_name}}/example.py"
+check = "ruff check"
+fix = "ruff check --fix"
 test = "pytest {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [

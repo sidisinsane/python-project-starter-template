@@ -43,9 +43,12 @@ dependencies = [
   "coverage[toml]>=6.5",
   "pytest",
   "pytest-copie>=0.1.6",
+  "ruff>=0.4.7",
 ]
 [tool.hatch.envs.default.scripts]
 example = "python src/python_project_starter_template/example.py"
+check = "ruff check"
+fix = "ruff check --fix"
 test = "pytest {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
