@@ -1,6 +1,14 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 ---
+default_install_hook_types:
+  - commit-msg
+  - post-commit
+  - pre-commit
+
+default_stages:
+  - commit
+
 repos:
   # General checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -37,6 +45,24 @@ repos:
       - id: mypy
         args: [.]
         pass_filenames: false
+
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.27.0
+    hooks:
+      - id: commitizen
+        description: >
+          Check whether the current commit message follows commiting rules. 
+          Allow empty commit messages by default, because they typically 
+          indicate to Git that the commit should be aborted.
+      - id: commitizen-branch
+        description: >
+          Check all commit messages that are already on the current branch but 
+          not the default branch on the origin repository. Useful for checking 
+          messages after the fact (e.g., pre-push or in CI) without an expensive 
+          check of the entire repository history.
+        stages:
+          - post-commit
+          - push
 
 ci:
   skip: [pytest]

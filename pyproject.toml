@@ -44,10 +44,12 @@ dependencies = [
   "pytest",
   "pytest-copie>=0.1.6",
   "ruff>=0.4.7",
+  "commitizen>=3.27.0",
 ]
 [tool.hatch.envs.default.scripts]
 example = "python src/python_project_starter_template/example.py"
 check = "ruff check"
+bump = "cz bump --yes"
 fix = "ruff check --fix"
 pre-commit-install = "pre-commit install && pre-commit install --hook-type commit-msg"
 pre-commit-all = "pre-commit run --all-files"
@@ -112,3 +114,11 @@ exclude_lines = [
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
 ]
+
+[tool.commitizen]
+version = "0.0.1"
+version_files = [
+  "src/python_project_starter_template/__about__.py:__version__",
+  "pyproject.toml:version",
+]
+update_changelog_on_bump = true
