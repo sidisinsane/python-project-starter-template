@@ -116,7 +116,7 @@ exclude_lines = [
 ]
 
 [tool.commitizen]
-version = "0.0.1"
+version = "0.1.0"
 version_files = [
   "src/python_project_starter_template/__about__.py:__version__",
   "pyproject.toml:version",
